@@ -117,8 +117,8 @@ function Upload() {
                 try {
                     console.log('ASYNC');
                     return await axios.post(
-                        // 'https://theraphy-nodejs-heroku.herokuapp.com/',
-                        'http://localhost:3001/',
+                        'https://theraphy-nodejs-heroku2.herokuapp.com/',
+                        // 'http://localhost:3001/',
                         formData
                     );
                 } catch (error) {
