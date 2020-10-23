@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/theraphy-react-gh-pages/static/css/main.14c0b712.chunk.css",
+    "main.js": "/theraphy-react-gh-pages/static/js/main.0cbe6810.chunk.js",
+    "main.js.map": "/theraphy-react-gh-pages/static/js/main.0cbe6810.chunk.js.map",
+    "runtime-main.js": "/theraphy-react-gh-pages/static/js/runtime-main.3645ad53.js",
+    "runtime-main.js.map": "/theraphy-react-gh-pages/static/js/runtime-main.3645ad53.js.map",
+    "static/js/2.611a6f91.chunk.js": "/theraphy-react-gh-pages/static/js/2.611a6f91.chunk.js",
+    "static/js/2.611a6f91.chunk.js.map": "/theraphy-react-gh-pages/static/js/2.611a6f91.chunk.js.map",
+    "index.html": "/theraphy-react-gh-pages/index.html",
+    "precache-manifest.b8597d45d3a586d3e1ed86833ce4413a.js": "/theraphy-react-gh-pages/precache-manifest.b8597d45d3a586d3e1ed86833ce4413a.js",
+    "service-worker.js": "/theraphy-react-gh-pages/service-worker.js",
+    "static/css/main.14c0b712.chunk.css.map": "/theraphy-react-gh-pages/static/css/main.14c0b712.chunk.css.map",
+    "static/js/2.611a6f91.chunk.js.LICENSE.txt": "/theraphy-react-gh-pages/static/js/2.611a6f91.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3645ad53.js",
+    "static/js/2.611a6f91.chunk.js",
+    "static/css/main.14c0b712.chunk.css",
+    "static/js/main.0cbe6810.chunk.js"
+  ]
+}
