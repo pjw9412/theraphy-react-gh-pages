@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/theraphy-react-gh-pages/static/css/main.14c0b712.chunk.css",
-    "main.js": "/theraphy-react-gh-pages/static/js/main.3ca55247.chunk.js",
-    "main.js.map": "/theraphy-react-gh-pages/static/js/main.3ca55247.chunk.js.map",
+    "main.js": "/theraphy-react-gh-pages/static/js/main.51aefab7.chunk.js",
+    "main.js.map": "/theraphy-react-gh-pages/static/js/main.51aefab7.chunk.js.map",
     "runtime-main.js": "/theraphy-react-gh-pages/static/js/runtime-main.3645ad53.js",
     "runtime-main.js.map": "/theraphy-react-gh-pages/static/js/runtime-main.3645ad53.js.map",
     "static/js/2.611a6f91.chunk.js": "/theraphy-react-gh-pages/static/js/2.611a6f91.chunk.js",
     "static/js/2.611a6f91.chunk.js.map": "/theraphy-react-gh-pages/static/js/2.611a6f91.chunk.js.map",
     "index.html": "/theraphy-react-gh-pages/index.html",
-    "precache-manifest.7acdcaea0beeddf5544c306bfb153649.js": "/theraphy-react-gh-pages/precache-manifest.7acdcaea0beeddf5544c306bfb153649.js",
+    "precache-manifest.e07b9e3b1290c7ced15f2190c1b92f0b.js": "/theraphy-react-gh-pages/precache-manifest.e07b9e3b1290c7ced15f2190c1b92f0b.js",
     "service-worker.js": "/theraphy-react-gh-pages/service-worker.js",
     "static/css/main.14c0b712.chunk.css.map": "/theraphy-react-gh-pages/static/css/main.14c0b712.chunk.css.map",
     "static/js/2.611a6f91.chunk.js.LICENSE.txt": "/theraphy-react-gh-pages/static/js/2.611a6f91.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3645ad53.js",
     "static/js/2.611a6f91.chunk.js",
     "static/css/main.14c0b712.chunk.css",
-    "static/js/main.3ca55247.chunk.js"
+    "static/js/main.51aefab7.chunk.js"
   ]
 }
