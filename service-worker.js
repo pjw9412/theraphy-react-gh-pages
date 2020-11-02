@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/theraphy-react-gh-pages/precache-manifest.69f61f511861c04fcc2588d4e3925594.js"
+  "/theraphy-react-gh-pages/precache-manifest.054d79393b609e7e323f188d80378df5.js"
 );
 
 self.addEventListener('message', (event) => {
