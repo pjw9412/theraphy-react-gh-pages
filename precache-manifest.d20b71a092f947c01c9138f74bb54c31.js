@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e97cb5528d08420b1881567a017fc139",
+    "revision": "0106459006d568272efb7d6b2cc2408e",
     "url": "/theraphy-react-gh-pages/index.html"
   },
   {
-    "revision": "7132b85a001215f2fca2",
+    "revision": "2436295479ce6215e3f1",
     "url": "/theraphy-react-gh-pages/static/css/main.bf956158.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/theraphy-react-gh-pages/static/js/2.611a6f91.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7132b85a001215f2fca2",
-    "url": "/theraphy-react-gh-pages/static/js/main.890f9625.chunk.js"
+    "revision": "2436295479ce6215e3f1",
+    "url": "/theraphy-react-gh-pages/static/js/main.40f3090b.chunk.js"
   },
   {
     "revision": "92c7a4435aeff9cefe33",
