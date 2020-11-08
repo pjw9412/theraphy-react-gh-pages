@@ -9,7 +9,6 @@ import Dropzone from 'react-dropzone';
 import Banner from 'react-js-banner';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import './Upload.scss';
-// import { useAsync } from 'react-async';
 import InfoModal from './InfoModal';
 
 const override = css`
@@ -112,13 +111,17 @@ function Upload() {
         if (pictureFiles.length > 0) {
             const formData = new FormData(); // 서버에 text가 아닌 file을 보낼 때 FormData()를 사용
             formData.append('image', pictureFiles[0], pictureFiles[0].name);
-            
+            console.log("FORMDATA === ", formData);
+
+            const start = new Date().getTime();
             let imagePost = async () => {   // Node.js 서버로 사진 보내기
                 try {
                     console.log('ASYNC');
+                    console.log(formData);
                     return await axios.post(
                         'https://theraphy-nodejs-heroku2.herokuapp.com/',
-                        // 'http://localhost:3001/',
+                        //'http://localhost:3001/',
+                        //'https://st4flx8u1l.execute-api.ap-northeast-2.amazonaws.com/production', // AWS Lambda
                         formData
                     );
                 } catch (error) {
@@ -126,68 +129,73 @@ function Upload() {
                 }
             };
             let response = await imagePost(); // 서버 응답받기
+
+            const elapsed = new Date().getTime() - start;
+            console.log("%c소요된 시간 == ",'color:green', elapsed);
             console.log('AWAIT');
-            // console.log('response = ', response);
+            console.log('response = ', response);
             console.log('response.data = ', response.data);
-            console.log('response.data[0][0] = ', response.data[0][0]);
-            console.log('response.data[1][0] = ', response.data[1][0]);
-            
             if (!response) {
                 // 에러가 있으면,
                 console.log('IN1');
                 showBanner({ error: true });
             } else {
-                // 에러가 없으면, 캔버스에 그리기
                 const img = document.getElementById('preview');
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0, img.width, img.height);
-                if (response.data[0][0].success === true) {
-                    for(let i=0; i<response.data.length; i++){
-                        console.log(response.data[i][0]);
-                        let caption = (text => {
-                            return { 'house': '집', 'window': '창문', 'door': '현관문', 'triangle roof': '뾰족한 지붕', 'fense': '울타리', 'smoking chimney': '연기나는 굴뚝' }[text];
-                        })(response.data[i][0].label);
-                        const { x, y, width, height } = response.data[i][0].coordinate;
-                        let color = getRandomColor();
-                        console.log(response.data[0][0].house);
-                        
-                        // stroke()는 이전에 그렸던 path를 다음번에도 그리는 습성이 있는데, beginPath()로 초기화. 색상 지정을 위함.
-                        ctx.beginPath();    
-                        ctx.lineWidth = "4";
-                        ctx.font="bold 50px sans-serif";
-                        ctx.fillStyle= color;   
-                        ctx.strokeStyle = color;
-                        ctx.fillText(caption + " " + response.data[i][0].score.toFixed(3), x, y-10);
-                        ctx.rect(x, y, width, height);
-                        ctx.stroke();
+                if(response.data.success !== false){
+                    // 에러가 없으면, 캔버스에 그리기
+                    if (response.data[0][0].success === true) {
+                        // console.log('rseponse.data[0] = ', response.data[0]);
+                        // console.log('response.data[0][0] = ', response.data[0][0]);
+                        // console.log('response.data[1][0] = ', response.data[1][0]);
+                        for(let i=0; i<response.data.length; i++){
+                            console.log(response.data[i][0]);
+                            let caption = (text => {
+                                return { 'house': '집', 'window': '창문', 'door': '현관문', 'roof' : '지붕', 'triangle roof': '뾰족한 지붕', 'fense': '울타리', 'smoking chimney': '연기나는 굴뚝' }[text];
+                            })(response.data[i][0].label);
+                            const { x, y, width, height } = response.data[i][0].coordinate;
+                            let color = getRandomColor();
+                            console.log(response.data[0][0].house);
+                            
+                            // stroke()는 이전에 그렸던 path를 다음번에도 그리는 습성이 있는데, beginPath()로 초기화. 색상 지정을 위함.
+                            ctx.beginPath();    
+                            ctx.lineWidth = "3";
+                            ctx.font="bold 40px sans-serif";
+                            ctx.fillStyle= color;   
+                            ctx.strokeStyle = color;
+                            ctx.fillText(caption + " " + response.data[i][0].score.toFixed(3), x, y+40);
+                            ctx.rect(x, y, width, height);
+                            ctx.stroke();
 
-                        if(i===0){
-                            SetState({
-                                ...state,
-                                predictions: caption,
-                                loading: false,
-                                fileName: response.data[0][0].path,
-                                hash: response.data[0][0].hash,
-                                vote: [
-                                    response.data[0].voteChaewon,
-                                    response.data[0].voteYuri,
-                                    response.data[0].voteYena
-                                ],
-                                showResult: true,
-                                house: response.data[0][0].house
-                            })
-                        }else{
-                            SetState({
-                                ...state,
-                                predictions: caption,
-                                loading: false,
-                                showResult: true,
-                                house: response.data[0][0].house
-                            })
-                        }
-                        console.log("%cSTATE(ONDROP) == ",'color:blue', state);
-                    };
+                            if(i===0){
+                                SetState({
+                                    ...state,
+                                    predictions: caption,
+                                    loading: false,
+                                    fileName: response.data[0][0].path,
+                                    hash: response.data[0][0].hash,
+                                    vote: [
+                                        response.data[0].voteChaewon,
+                                        response.data[0].voteYuri,
+                                        response.data[0].voteYena
+                                    ],
+                                    showResult: true,
+                                    house: response.data[0][0].house
+                                })
+                            }else{
+                                SetState({
+                                    ...state,
+                                    predictions: caption,
+                                    loading: false,
+                                    showResult: true,
+                                    house: response.data[0][0].house
+                                })
+                            }
+                            console.log("%cSTATE(ONDROP) == ",'color:blue', state);
+                        };
+                    }
                 } else {
                     console.log('IN2');
                     ctx.drawImage(img, 0, 0, img.width, img.height);
@@ -328,20 +336,22 @@ function Upload() {
                                             이 브라우저는 'canvas'기능을 제공하지 않습니다.
                                         </canvas>
                                         {state.showResult ? ( //  showResult가 T인 경우, 결과 출력
-                                            <div className="resultBox">
-                                                <div className="resultDiv">
-                                                    {/* 분석 결과 : {state.predictions} */}
-                                                </div>
-                                                <div className="resultDiv">
-                                                    <AnimatedModal
-                                                        banner={showBanner}
-                                                        clear={clear}
-                                                        fileName={state.fileName}
-                                                        hash={state.hash}
-                                                        prediction={state.predictions}
-                                                    />
-                                                </div>
-                                            </div>
+                                            // <div className="resultBox">
+                                            //     <div className="resultDiv">
+                                            //         {/* 분석 결과 : {state.predictions} */}
+                                            //     </div>
+                                            //     <div className="resultDiv">
+                                            //         <AnimatedModal
+                                            //             banner={showBanner}
+                                            //             clear={clear}
+                                            //             fileName={state.fileName}
+                                            //             hash={state.hash}
+                                            //             prediction={state.predictions}
+                                            //         />
+                                            //     </div>
+                                            // </div>
+                                            <>
+                                            </>
                                         ) : null}
                                         {/* 로딩중 이미지 출력 */}
                                         <div className="loadingBox">

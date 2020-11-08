@@ -27,15 +27,15 @@ function Table({ house }) {
             no: 0,
             division: '가',
             item: '가',
-            first: '가',
-            second: '가',
-            third: '가',
-            fourth: '가',
-            fifth: '가',
-            sixth: '가',
-            seventh: '가',
-            eighth: '가',
-            ninth: '가'
+            first: 0,
+            second: 0,
+            third: 0,
+            fourth: 0,
+            fifth: 0,
+            sixth: 0,
+            seventh: 0,
+            eighth: 0,
+            ninth: 0
         },
         {
             no: 4,
@@ -227,6 +227,19 @@ function Table({ house }) {
         pertinentList.push(HList.find(abc => abc.no === ab));
     });
 
+    let first = 0, second = 0, third = 0, fourth = 0, fifth = 0, sixth = 0, seventh = 0,  eighth = 0, ninth = 0;
+    for(let i = 0; i < pertinentList.length; i++){
+        first += parseInt(`${pertinentList[i].first}`);
+        second += parseInt(`${pertinentList[i].second}`);
+        third += parseInt(`${pertinentList[i].third}`);
+        fourth += parseInt(`${pertinentList[i].fourth}`);
+        fifth += parseInt(`${pertinentList[i].fifth}`);
+        sixth += parseInt(`${pertinentList[i].sixth}`);
+        seventh += parseInt(`${pertinentList[i].seventh}`);
+        eighth += parseInt(`${pertinentList[i].eighth}`);
+        ninth += parseInt(`${pertinentList[i].ninth}`);
+    }
+
     return (
         // https://codepen.io/alexerlandsson/pen/mPWgpO
         <div className="tableContainer">
@@ -258,20 +271,37 @@ function Table({ house }) {
                     )}
                 </tbody>
                 <tfoot>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>3</td>
-                        <td>5</td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>1</td>
-                        <td>2</td>
-                    </tr>
+                    {pertinentList ? (
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>{first}</td>
+                            <td>{second}</td>
+                            <td>{third}</td>
+                            <td>{fourth}</td>
+                            <td>{fifth}</td>
+                            <td>{sixth}</td>
+                            <td>{seventh}</td>
+                            <td>{eighth}</td>
+                            <td>{ninth}</td>
+                        </tr>
+                    ) : (
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    )}
                 </tfoot>
             </table>
         </div>
