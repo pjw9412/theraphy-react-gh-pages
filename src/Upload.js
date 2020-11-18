@@ -153,7 +153,8 @@ function Upload() {
                         for(let i=0; i<response.data.length; i++){
                             console.log(response.data[i][0]);
                             let caption = (text => {
-                                return { 'house': '집', 'window': '창문', 'door': '현관문', 'roof' : '지붕', 'triangle roof': '뾰족한 지붕', 'fense': '울타리', 'smoking chimney': '연기나는 굴뚝' }[text];
+                                return { 'house': '집', 'window': '창문', 'door': '현관문', 'roof' : '지붕', 'triangle roof': '뾰족한 지붕', 'fense': '울타리', 'smoking chimney': '연기나는 굴뚝', 'tree': '나무', 'veiled window': '가려진 창문', 
+                            'mountain':'산', 'ground line':'지면선', 'patterned roof':'무늬지붕', 'side door house':'측면에 문 달린 집','poor wall':'허술한 벽', 'solid wall':'견고한 벽', 'half sun':'반만 나온 태양', '2nd floor window house':'2층에만 창문이 있는 집' }[text];
                             })(response.data[i][0].label);
                             const { x, y, width, height } = response.data[i][0].coordinate;
                             let color = getRandomColor();
@@ -247,7 +248,7 @@ function Upload() {
             <Banner
                 css={{ backgroundColor: 'yellow' }}
                 className="banner"
-                title="얼굴을 찾을 수 없습니다."
+                title="집 그림 분석에 실패했습니다."
                 showBanner={state.fail}
             />
             <div className="bodyDiv">
