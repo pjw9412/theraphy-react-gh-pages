@@ -341,6 +341,8 @@ function Table({ house }) {
 
     let first = 0, second = 0, third = 0, fourth = 0, fifth = 0, sixth = 0, seventh = 0,  eighth = 0, ninth = 0;
     for(let i = 0; i < pertinentList.length; i++){
+        console.log("************************************");
+        console.log(pertinentList)
         first += parseInt(`${pertinentList[i].first}`);
         second += parseInt(`${pertinentList[i].second}`);
         third += parseInt(`${pertinentList[i].third}`);
